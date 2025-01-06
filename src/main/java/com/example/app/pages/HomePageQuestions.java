@@ -44,6 +44,9 @@ public class HomePageQuestions {
     public static final String ANSWER_ELEM_CANCELLATION = "Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои.";//Accordion "Можно ли отменить заказ?"
     public static final String ANSWER_ELEM_BEYOND_THE_MKAD = "Да, обязательно. Всем самокатов! И Москве, и Московской области.";//Accordion "Я живу за МКАДом, привезёте?"
 
+    //Локатор для куки
+    public static final By Cook = By.id("rcc-confirm-button");
+
     //Конструктор класса
     public HomePageQuestions(WebDriver driver){
         this.driver = driver;
@@ -53,8 +56,7 @@ public class HomePageQuestions {
     public void scrollQuestionsDropdown(){
 
 //Закрываем куки
-        By cook = By.id("rcc-confirm-button");
-        driver.findElement(cook).click();
+        driver.findElement(Cook).click();
 
 //Скролл до вопросов
         WebElement element = driver.findElement(QUESTION_PAY);
