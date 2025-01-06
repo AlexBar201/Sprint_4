@@ -54,11 +54,16 @@ public class HomePageQuestions {
         this.driver = driver;
     }
 
+    //Метод для закрытия куки
+    public void closeCooke(){
+        driver.findElement(Cook).click();
+    }
+
     //Метод скролла до вопросов
     public void scrollQuestionsDropdown() {
 
 //Закрываем куки
-        driver.findElement(Cook).click();
+        closeCooke();
 
 //Скролл до вопросов
         WebElement element = driver.findElement(QUESTION_PAY);
