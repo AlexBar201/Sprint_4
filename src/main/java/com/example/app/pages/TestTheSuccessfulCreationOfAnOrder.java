@@ -43,6 +43,9 @@ public class TestTheSuccessfulCreationOfAnOrder {
     //Локатор для окна "Заказ оформлен"
     private static final By THE_ORDER_HAS_BEEN_PLACED = By.xpath(".//div[@class='Order_Modal__YZ-d3']");
 
+    //Локатор для куки
+    private static final By Cook = By.id("rcc-confirm-button");
+
     //Конструктор класса
     public TestTheSuccessfulCreationOfAnOrder(WebDriver driver){
         this.driver = driver;
@@ -53,12 +56,16 @@ public class TestTheSuccessfulCreationOfAnOrder {
         driver.findElement(FIRST_BUTTON_ORDER).click();
     }
 
+    //Метод для закрытия куки
+    public void closeCooke(){
+        driver.findElement(Cook).click();
+    }
+
     //Метод клика по кнопке SECOND_BUTTON_ORDER
     public void clickSecondButtonOrder(){
 
 //////Закрываем куки
-        By cook = By.id("rcc-confirm-button");
-        driver.findElement(cook).click();
+      closeCooke();
 
 //////Скролл до кнопки
         WebElement element = driver.findElement(By.xpath(".//div[@class='Home_StatusInfo__HrjoZ']/div[@class='Home_StatusDescription__3WGl5']"));
