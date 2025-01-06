@@ -3,7 +3,9 @@ package com.example.app.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+
 import static org.hamcrest.CoreMatchers.is;
+
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -48,24 +50,24 @@ public class HomePageQuestions {
     public static final By Cook = By.id("rcc-confirm-button");
 
     //Конструктор класса
-    public HomePageQuestions(WebDriver driver){
+    public HomePageQuestions(WebDriver driver) {
         this.driver = driver;
     }
 
     //Метод скролла до вопросов
-    public void scrollQuestionsDropdown(){
+    public void scrollQuestionsDropdown() {
 
 //Закрываем куки
         driver.findElement(Cook).click();
 
 //Скролл до вопросов
         WebElement element = driver.findElement(QUESTION_PAY);
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
 
     }
 
     //Метод клика на Accordion элемент с вопросом
-    public void clickDropdownArrow(By AccordionElement){
+    public void clickDropdownArrow(By AccordionElement) {
 
 //Клик на вопрос
         driver.findElement(AccordionElement).click();
@@ -73,19 +75,19 @@ public class HomePageQuestions {
     }
 
     //Метод ожидания панели с текстом
-    public void waitPanelElement(By panelElement){
+    public void waitPanelElement(By panelElement) {
         new WebDriverWait(driver, 3)
                 .until(ExpectedConditions.visibilityOfElementLocated(panelElement));
     }
 
     //Метод проверки выпадающего текста
-    public void isDropdownTextCorrect(By panelElement, String textElement){
+    public void isDropdownTextCorrect(By panelElement, String textElement) {
         String textElementAccordion = driver.findElement(panelElement).getText();
         MatcherAssert.assertThat(textElementAccordion, is(textElement));
     }
 
     //Шаг "Когда нажимаешь на стрелочку, открывается соответствующий текст."
-    public void checkDropdownTextOpensOnArrowClick(By AccordionElement, By panelElement, String textElement){
+    public void checkDropdownTextOpensOnArrowClick(By AccordionElement, By panelElement, String textElement) {
         clickDropdownArrow(AccordionElement);
         waitPanelElement(panelElement);
         isDropdownTextCorrect(panelElement, textElement);
