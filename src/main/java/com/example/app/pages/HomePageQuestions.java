@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Вопросы о важном !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-public class DropdownQuestions {
+public class HomePageQuestions {
 
     private WebDriver driver;
 
@@ -45,7 +45,7 @@ public class DropdownQuestions {
     public static final String ANSWER_ELEM_BEYOND_THE_MKAD = "Да, обязательно. Всем самокатов! И Москве, и Московской области.";//Accordion "Я живу за МКАДом, привезёте?"
 
     //Конструктор класса
-    public DropdownQuestions(WebDriver driver){
+    public HomePageQuestions(WebDriver driver){
         this.driver = driver;
     }
 

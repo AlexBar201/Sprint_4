@@ -1,20 +1,20 @@
 package com.example.app.tests;
 
-import com.example.app.pages.DropdownQuestions;
+import com.example.app.pages.HomePageQuestions;
 import org.junit.After;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import static com.example.app.pages.DropdownQuestions.*;
+import static com.example.app.pages.HomePageQuestions.*;
 
-public class DropdownQuestionTest {
+public class HomePageQuestionTest {
 
     private WebDriver driver;
 
     //Начинаем писать тест
     @Test
-    public void QuestionsDropdownTextTest(){
+    public void QuestionsHomePageTest(){
 
 //Создали драйвер для браузера Chrome
         WebDriver driver = new ChromeDriver();
@@ -25,7 +25,7 @@ public class DropdownQuestionTest {
         driver.get("https://qa-scooter.praktikum-services.ru/");
 
 //Создали объект класса страницы с выпадающими вопросами
-        DropdownQuestions objQuestDrop = new DropdownQuestions(driver);
+        HomePageQuestions objQuestDrop = new HomePageQuestions(driver);
 
 //Проверка ответов на вопросы о важном
         objQuestDrop.scrollQuestionsDropdown();

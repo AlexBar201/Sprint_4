@@ -1,6 +1,6 @@
 package com.example.app.tests;
 
-import com.example.app.pages.DropdownQuestions;
+import com.example.app.pages.HomePageQuestions;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class DropdownQuestionTestParameterized {
+public class HomePageQuestionTestParameterized {
 
     private WebDriver driver;
 
@@ -29,14 +29,14 @@ public class DropdownQuestionTestParameterized {
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {DropdownQuestions.QUESTION_PAY, DropdownQuestions.PANEL_ANSWER_PAY, DropdownQuestions.ANSWER_ELEM_PAY},
-                {DropdownQuestions.QUESTION_MULTIPLE_SCOOTERS, DropdownQuestions.PANEL_ANSWER_MULTIPLE_SCOOTERS, DropdownQuestions.ANSWER_ELEM_MULTIPLE_SCOOTERS},
-                {DropdownQuestions.QUESTION_TIME_RENT, DropdownQuestions.PANEL_ANSWER_TIME_RENT, DropdownQuestions.ANSWER_ELEM_TIME_RENT},
-                {DropdownQuestions.QUESTION_TODAY_RENT, DropdownQuestions.PANEL_ANSWER_TODAY_RENT, DropdownQuestions.ANSWER_ELEM_TODAY_RENT},
-                {DropdownQuestions.QUESTION_EXTEND_RENT, DropdownQuestions.PANEL_ANSWER_EXTEND_RENT, DropdownQuestions.ANSWER_ELEM_EXTEND_RENT},
-                {DropdownQuestions.QUESTION_CHARGING, DropdownQuestions.PANEL_ANSWER_CHARGING, DropdownQuestions.ANSWER_ELEM_CHARGING},
-                {DropdownQuestions.QUESTION_ORDER_CANCELLATION, DropdownQuestions.PANEL_ANSWER_CANCELLATION, DropdownQuestions.ANSWER_ELEM_CANCELLATION},
-                {DropdownQuestions.QUESTION_BEYOND_THE_MKAD, DropdownQuestions.PANEL_ANSWER_BEYOND_THE_MKAD, DropdownQuestions.ANSWER_ELEM_BEYOND_THE_MKAD}
+                {HomePageQuestions.QUESTION_PAY, HomePageQuestions.PANEL_ANSWER_PAY, HomePageQuestions.ANSWER_ELEM_PAY},
+                {HomePageQuestions.QUESTION_MULTIPLE_SCOOTERS, HomePageQuestions.PANEL_ANSWER_MULTIPLE_SCOOTERS, HomePageQuestions.ANSWER_ELEM_MULTIPLE_SCOOTERS},
+                {HomePageQuestions.QUESTION_TIME_RENT, HomePageQuestions.PANEL_ANSWER_TIME_RENT, HomePageQuestions.ANSWER_ELEM_TIME_RENT},
+                {HomePageQuestions.QUESTION_TODAY_RENT, HomePageQuestions.PANEL_ANSWER_TODAY_RENT, HomePageQuestions.ANSWER_ELEM_TODAY_RENT},
+                {HomePageQuestions.QUESTION_EXTEND_RENT, HomePageQuestions.PANEL_ANSWER_EXTEND_RENT, HomePageQuestions.ANSWER_ELEM_EXTEND_RENT},
+                {HomePageQuestions.QUESTION_CHARGING, HomePageQuestions.PANEL_ANSWER_CHARGING, HomePageQuestions.ANSWER_ELEM_CHARGING},
+                {HomePageQuestions.QUESTION_ORDER_CANCELLATION, HomePageQuestions.PANEL_ANSWER_CANCELLATION, HomePageQuestions.ANSWER_ELEM_CANCELLATION},
+                {HomePageQuestions.QUESTION_BEYOND_THE_MKAD, HomePageQuestions.PANEL_ANSWER_BEYOND_THE_MKAD, HomePageQuestions.ANSWER_ELEM_BEYOND_THE_MKAD}
         });
     }
 
@@ -47,7 +47,7 @@ public class DropdownQuestionTestParameterized {
         WebDriver driver = new FirefoxDriver();*/
         driver = new ChromeDriver();
         driver.get("https://qa-scooter.praktikum-services.ru/");
-        DropdownQuestions objQuestDrop = new DropdownQuestions(driver);
+        HomePageQuestions objQuestDrop = new HomePageQuestions(driver);
 
         objQuestDrop.scrollQuestionsDropdown();
         objQuestDrop.checkDropdownTextOpensOnArrowClick(accordion, panelText, textElem);
