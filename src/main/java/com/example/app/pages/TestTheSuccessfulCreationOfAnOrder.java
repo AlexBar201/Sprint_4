@@ -7,14 +7,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static com.example.app.pages.HomePageQuestions.FIRST_BUTTON_ORDER;
+import static com.example.app.pages.HomePageQuestions.SECOND_BUTTON_ORDER;
+
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Оформление заказа(две кнопки заказать) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 public class TestTheSuccessfulCreationOfAnOrder {
 
     private WebDriver driver;
-
-    //Локаторы для двух кнопок "Заказать" на главной странице
-    private static final By FIRST_BUTTON_ORDER = By.className("Button_Button__ra12g");//Кнопка, которая находится в заголовке страницы
-    private static final By SECOND_BUTTON_ORDER = By.xpath(".//div[@class='Home_FinishButton__1_cWm']/button[@class='Button_Button__ra12g Button_UltraBig__UU3Lp']");//Кнопка, которая находится в Home RoadMap
 
     //Локатор для кнопки "Далее"
     private static final By BUTTON_FURTHER = By.xpath(".//div[@class='Order_NextButton__1_rCA']/button[@class='Button_Button__ra12g Button_Middle__1CSJM']");//Кнопка "Далее" в форме "Для кого самокат"

@@ -46,6 +46,10 @@ public class HomePageQuestions {
     public static final String ANSWER_ELEM_CANCELLATION = "Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои.";//Accordion "Можно ли отменить заказ?"
     public static final String ANSWER_ELEM_BEYOND_THE_MKAD = "Да, обязательно. Всем самокатов! И Москве, и Московской области.";//Accordion "Я живу за МКАДом, привезёте?"
 
+    //Локаторы для двух кнопок "Заказать" на главной странице
+    public static final By FIRST_BUTTON_ORDER = By.className("Button_Button__ra12g");//Кнопка, которая находится в заголовке страницы
+    public static final By SECOND_BUTTON_ORDER = By.xpath(".//div[@class='Home_FinishButton__1_cWm']/button[@class='Button_Button__ra12g Button_UltraBig__UU3Lp']");//Кнопка, которая находится в Home RoadMap
+
     //Локатор для куки
     public static final By Cook = By.id("rcc-confirm-button");
 
