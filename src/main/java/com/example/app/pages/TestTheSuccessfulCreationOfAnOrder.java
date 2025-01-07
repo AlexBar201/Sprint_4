@@ -68,9 +68,9 @@ public class TestTheSuccessfulCreationOfAnOrder {
       closeCooke();
 
 //////Скролл до кнопки
-        WebElement element = driver.findElement(By.xpath(".//div[@class='Home_StatusInfo__HrjoZ']/div[@class='Home_StatusDescription__3WGl5']"));
+        WebElement element = driver.findElement(By.xpath(".//div[contains(@class, 'Home_FinishButton')]/button[contains(@class, 'Button_Button')]"));
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
-        new WebDriverWait(driver, 10)
+        new WebDriverWait(driver, 3)
                 .until(ExpectedConditions.visibilityOfElementLocated(SECOND_BUTTON_ORDER));
 
 //////Клик по кнопке
