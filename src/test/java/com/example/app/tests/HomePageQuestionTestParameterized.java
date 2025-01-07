@@ -12,6 +12,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.Arrays;
 import java.util.Collection;
 
+import static com.example.app.pages.HomePageQuestions.*;
+
 @RunWith(Parameterized.class)
 public class HomePageQuestionTestParameterized {
 
@@ -19,24 +21,22 @@ public class HomePageQuestionTestParameterized {
 
     //Создаем переменные в которых будут храниться параметры с соответствующим индексом из тестового набора
     @Parameterized.Parameter(0)
-    public By accordion;
+    public String question;
     @Parameterized.Parameter(1)
-    public By panelText;
-    @Parameterized.Parameter(2)
     public String textElem;
 
     //Создаём тестовые наборы данных в виде списка массивов
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {HomePageQuestions.QUESTION_PAY, HomePageQuestions.PANEL_ANSWER_PAY, HomePageQuestions.ANSWER_ELEM_PAY},
-                {HomePageQuestions.QUESTION_MULTIPLE_SCOOTERS, HomePageQuestions.PANEL_ANSWER_MULTIPLE_SCOOTERS, HomePageQuestions.ANSWER_ELEM_MULTIPLE_SCOOTERS},
-                {HomePageQuestions.QUESTION_TIME_RENT, HomePageQuestions.PANEL_ANSWER_TIME_RENT, HomePageQuestions.ANSWER_ELEM_TIME_RENT},
-                {HomePageQuestions.QUESTION_TODAY_RENT, HomePageQuestions.PANEL_ANSWER_TODAY_RENT, HomePageQuestions.ANSWER_ELEM_TODAY_RENT},
-                {HomePageQuestions.QUESTION_EXTEND_RENT, HomePageQuestions.PANEL_ANSWER_EXTEND_RENT, HomePageQuestions.ANSWER_ELEM_EXTEND_RENT},
-                {HomePageQuestions.QUESTION_CHARGING, HomePageQuestions.PANEL_ANSWER_CHARGING, HomePageQuestions.ANSWER_ELEM_CHARGING},
-                {HomePageQuestions.QUESTION_ORDER_CANCELLATION, HomePageQuestions.PANEL_ANSWER_CANCELLATION, HomePageQuestions.ANSWER_ELEM_CANCELLATION},
-                {HomePageQuestions.QUESTION_BEYOND_THE_MKAD, HomePageQuestions.PANEL_ANSWER_BEYOND_THE_MKAD, HomePageQuestions.ANSWER_ELEM_BEYOND_THE_MKAD}
+                {_QUESTION_PAY, ANSWER_ELEM_PAY},
+                {_QUESTION_MULTIPLE_SCOOTERS, ANSWER_ELEM_MULTIPLE_SCOOTERS},
+                {_QUESTION_TIME_RENT, ANSWER_ELEM_TIME_RENT},
+                {_QUESTION_TODAY_RENT, ANSWER_ELEM_TODAY_RENT},
+                {_QUESTION_EXTEND_RENT, ANSWER_ELEM_EXTEND_RENT},
+                {_QUESTION_CHARGING, ANSWER_ELEM_CHARGING},
+                {_QUESTION_CANCELLATION, ANSWER_ELEM_CANCELLATION},
+                {_QUESTION_BEYOND_THE_MKAD, ANSWER_ELEM_BEYOND_THE_MKAD}
         });
     }
 
@@ -48,9 +48,7 @@ public class HomePageQuestionTestParameterized {
         driver = new ChromeDriver();
         driver.get("https://qa-scooter.praktikum-services.ru/");
         HomePageQuestions objQuestDrop = new HomePageQuestions(driver);
-
-        objQuestDrop.scrollQuestionsDropdown();
-        objQuestDrop.checkDropdownTextOpensOnArrowClick(accordion, panelText, textElem);
+        objQuestDrop.checkDropdownTextOpensOnArrowClick(question, textElem);
     }
     @After
     public void tearDown() {

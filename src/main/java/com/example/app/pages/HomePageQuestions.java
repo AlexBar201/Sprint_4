@@ -16,25 +16,18 @@ public class HomePageQuestions {
 
     private WebDriver driver;
 
-    //Локаторы Accordion элемента с вопросом для метода clickDropdownArrow
-    public static final By QUESTION_PAY = By.id("accordion__heading-0");//"Сколько это стоит? И как оплатить?"
-    public static final By QUESTION_MULTIPLE_SCOOTERS = By.id("accordion__heading-1");//"Хочу сразу несколько самокатов! Так можно?"
-    public static final By QUESTION_TIME_RENT = By.id("accordion__heading-2");//"Как рассчитывается время аренды?"
-    public static final By QUESTION_TODAY_RENT = By.id("accordion__heading-3");//Accordion "Можно ли заказать самокат прямо на сегодня?"
-    public static final By QUESTION_EXTEND_RENT = By.id("accordion__heading-4");//Accordion "Можно ли продлить заказ или вернуть самокат раньше?"
-    public static final By QUESTION_CHARGING = By.id("accordion__heading-5");//Accordion "Вы привозите зарядку вместе с самокатом?"
-    public static final By QUESTION_ORDER_CANCELLATION = By.id("accordion__heading-6");//Accordion "Можно ли отменить заказ?"
-    public static final By QUESTION_BEYOND_THE_MKAD = By.id("accordion__heading-7");//Accordion "Я живу за МКАДом, привезёте?"
+    //Локатор Accordion элемента с вопросом для метода clickDropdownArrow
+    private static final By QUESTION_PAY = By.id("accordion__heading-0");//"Сколько это стоит? И как оплатить?"
 
     //Локаторы панели с текстом для метода isDropdownTextCorrect
-    public static final By PANEL_ANSWER_PAY = By.id("accordion__panel-0");
-    public static final By PANEL_ANSWER_MULTIPLE_SCOOTERS = By.id("accordion__panel-1");
-    public static final By PANEL_ANSWER_TIME_RENT = By.id("accordion__panel-2");
-    public static final By PANEL_ANSWER_TODAY_RENT = By.id("accordion__panel-3");
-    public static final By PANEL_ANSWER_EXTEND_RENT = By.id("accordion__panel-4");
-    public static final By PANEL_ANSWER_CHARGING = By.id("accordion__panel-5");
-    public static final By PANEL_ANSWER_CANCELLATION = By.id("accordion__panel-6");
-    public static final By PANEL_ANSWER_BEYOND_THE_MKAD = By.id("accordion__panel-7");
+    public static final String _QUESTION_PAY = "Сколько это стоит? И как оплатить?";
+    public static final String _QUESTION_MULTIPLE_SCOOTERS = "Хочу сразу несколько самокатов! Так можно?";
+    public static final String _QUESTION_TIME_RENT = "Как рассчитывается время аренды?";
+    public static final String _QUESTION_TODAY_RENT = "Можно ли заказать самокат прямо на сегодня?";
+    public static final String _QUESTION_EXTEND_RENT = "Можно ли продлить заказ или вернуть самокат раньше?";
+    public static final String _QUESTION_CHARGING = "Вы привозите зарядку вместе с самокатом?";
+    public static final String _QUESTION_CANCELLATION = "Можно ли отменить заказ?";
+    public static final String _QUESTION_BEYOND_THE_MKAD = "Я жизу за МКАДом, привезёте?";
 
     //Текст который должен быть в поле для метода isDropdownTextCorrect
     public static final String ANSWER_ELEM_PAY = "Сутки — 400 рублей. Оплата курьеру — наличными или картой.";//Accordion "Сколько это стоит? И как оплатить?"
@@ -76,29 +69,27 @@ public class HomePageQuestions {
     }
 
     //Метод клика на Accordion элемент с вопросом
-    public void clickDropdownArrow(By AccordionElement) {
-
-//Клик на вопрос
-        driver.findElement(AccordionElement).click();
-
+    public void clickQuestion(String question){
+        scrollQuestionsDropdown();
+        driver.findElement(By.xpath(".//div[text() = '" + question + "']")).click();
     }
 
     //Метод ожидания панели с текстом
-    public void waitPanelElement(By panelElement) {
+    public void waitPanelElement() {
         new WebDriverWait(driver, 3)
-                .until(ExpectedConditions.visibilityOfElementLocated(panelElement));
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//div[@class='accordion__panel' and not(@hidden)]")));
     }
 
     //Метод проверки выпадающего текста
-    public void isDropdownTextCorrect(By panelElement, String textElement) {
-        String textElementAccordion = driver.findElement(panelElement).getText();
+    public void textQuestionCorrect(String question, String textElement){
+        clickQuestion(question);
+        waitPanelElement();
+        String textElementAccordion = driver.findElement(By.xpath(".//div[@class='accordion__panel' and not(@hidden)]")).getText();
         MatcherAssert.assertThat(textElementAccordion, is(textElement));
     }
 
     //Шаг "Когда нажимаешь на стрелочку, открывается соответствующий текст."
-    public void checkDropdownTextOpensOnArrowClick(By AccordionElement, By panelElement, String textElement) {
-        clickDropdownArrow(AccordionElement);
-        waitPanelElement(panelElement);
-        isDropdownTextCorrect(panelElement, textElement);
+    public void checkDropdownTextOpensOnArrowClick(String question, String textElement) {
+        textQuestionCorrect(question, textElement);
     }
 }
