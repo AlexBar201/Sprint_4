@@ -129,10 +129,12 @@ public class TestTheSuccessfulCreationOfAnOrder {
         driver.findElement(BUTTON_YES_FINISH).click();
     }
 
-    //Метод для ожидания окна "Заказ оформлен"
+    //Метод для ожидания кнопки "Просмотреть статус"
     public void waitTheOrderHasBeenPlaced(){
+        /*new WebDriverWait(driver, 10)
+                .until(ExpectedConditions.visibilityOfElementLocated(THE_ORDER_HAS_BEEN_PLACED));*/
         new WebDriverWait(driver, 10)
-                .until(ExpectedConditions.visibilityOfElementLocated(THE_ORDER_HAS_BEEN_PLACED));
+                .until(ExpectedConditions.visibilityOfElementLocated(STATUSBUTTON));
     }
 
     //Шаг для оформления заказа через кнопку FIRST_BUTTON_ORDER
@@ -150,4 +152,6 @@ public class TestTheSuccessfulCreationOfAnOrder {
         formFillingAbout();
         waitTheOrderHasBeenPlaced();
     }
+/////////////////////////////////////////////////////////////////////////////////////////
+private static final By STATUSBUTTON = By.xpath(".//div[@class='Order_NextButton__1_rCA']/button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
 }
